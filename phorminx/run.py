@@ -101,4 +101,4 @@ def run(lastfm_user):
 
 
 if __name__ == '__main__':
-    run('john_doe_42')
+    run('put lasfm username')
