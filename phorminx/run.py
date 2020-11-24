@@ -1,17 +1,12 @@
 import spotipy
-import spotipy.util as util
-from bs4 import BeautifulSoup
 import requests
 import math
-from config import USER, client_id, client_secret, redirect_uri, scope
+import time
 
+from bs4 import BeautifulSoup
 
-def get_spotipy_token(scope):
-    """
-    Token for auth ob Spotify
-    """
-    token = util.prompt_for_user_token(USER, scope, client_id, client_secret, redirect_uri)
-    return USER, token
+from utils.token import get_spotipy_token
+from config.config import scope
 
 
 def create_playlist_for_user(spotify_obj, spotify_username, playlist_name):
@@ -100,5 +95,13 @@ def run(lastfm_user):
     add_tracks_to_playlist(spotipy_object, username, playlist_id, tracks)
 
 
-if __name__ == '__main__':
-    run('put lasfm username')
+
+
+# if __name__ == '__main__':
+#     # run('morte_oculus')
+#     # run_lyrics_search()
+#     while True:
+#         artist, song, next_track_time = get_song()
+#         get_lyrics(artist, song)
+#         print('sleeping %s seconds' % next_track_time)
+#         time.sleep(next_track_time)
