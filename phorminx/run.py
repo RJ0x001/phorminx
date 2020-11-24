@@ -93,15 +93,3 @@ def run(lastfm_user):
     tracks = get_tracks_ids(spotipy_object, songs)
     playlist_id = create_playlist_for_user(spotipy_object, username, 'fav tracks last.fm user %s' % lastfm_user)
     add_tracks_to_playlist(spotipy_object, username, playlist_id, tracks)
-
-
-
-
-# if __name__ == '__main__':
-#     # run('morte_oculus')
-#     # run_lyrics_search()
-#     while True:
-#         artist, song, next_track_time = get_song()
-#         get_lyrics(artist, song)
-#         print('sleeping %s seconds' % next_track_time)
-#         time.sleep(next_track_time)
