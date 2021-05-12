@@ -1,6 +1,6 @@
 import spotipy
 import math
-
+import pprint
 # from utils.token import get_spotipy_token, get_genius_obj
 from utils.config import scope_song, get_spotipy_token, get_genius_obj
 
@@ -15,6 +15,9 @@ def get_song():
     full_duration = current_song_spotify_obj['item']['duration_ms']
     next_track_time = math.ceil((full_duration - progress) / 1000)
     spotify_artist = current_song_spotify_obj['item']['album']['artists'][0]['name']
+    album_title = current_song_spotify_obj['item']['album']['images'][0]['url']
+    artist_raw = spotipy_object.search(q='artist:' + spotify_artist, type='artist')
+    artist_img = artist_raw['artists']['items'][0]['images'][0]['url']
     spotify_song = current_song_spotify_obj['item']['name']
     return spotify_artist, spotify_song, next_track_time
 
@@ -48,7 +51,6 @@ def get_lyrics(artist, song, next_track_time):
         result_dict["lyrics"] = lyrics.lyrics
     except AttributeError:
         result_dict["lyrics"] = "Не удалось найти текст :("
-    print(result_dict)
     return result_dict
 
 
