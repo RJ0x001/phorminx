@@ -14,9 +14,6 @@ class Lyrics extends React.Component {
             <img className="img-thumbnail" id="artistPic" src={artist_img} alt={"#"}/>
             <img className="img-thumbnail" id="titlePic" src={album_title} alt={"#"}/>
         </div>
-        <div>
-            {timeLeft}
-        </div>
         <div className="text-justify">
             <span style={{whiteSpace: "pre-wrap"}}>
               {lyrics}

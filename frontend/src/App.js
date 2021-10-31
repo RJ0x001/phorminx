@@ -15,7 +15,7 @@ class App extends React.Component {
       lyrics: null,
       timeLeft: null,
     };
-  }
+  };
 
   render() {
     const { isLoading, artist, song, artist_img, album_title, timeLeft, lyrics } = this.state;
@@ -23,7 +23,7 @@ class App extends React.Component {
         <Lyrics isLoading={isLoading} artist={artist} song={song} artist_img={artist_img} album_title={album_title}
         lyrics={lyrics} timeLeft={timeLeft}/>
     );
-  }
+  };
   
   async componentDidMount() {
 
@@ -34,6 +34,10 @@ class App extends React.Component {
     const artist_img = lyricsData.data.artist_img
     const album_title = lyricsData.data.album_title
     const timeLeft = lyricsData.data.timeLeft
+
+    setInterval(() => {
+      window.location.reload();
+    }, 1000 * timeLeft);
 
     this.setState({
       ...this.state, ...{

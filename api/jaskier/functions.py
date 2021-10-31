@@ -3,7 +3,7 @@ import math
 import pprint
 from utils.config import scope_song, get_spotipy_token, get_genius_obj
 
-TRASH_COMP = ('live', 'explicit', 'remaster', 'bonus track')
+TRASH_COMP = ('live', 'explicit', 'remaster', 'bonus track', 'single version')
 
 
 def get_song():
