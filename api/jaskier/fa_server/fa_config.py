@@ -1,0 +1,1 @@
+SECRET = "supa-super-secret-key"

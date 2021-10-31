@@ -16,7 +16,11 @@ def get_song():
     spotify_artist = current_song_spotify_obj['item']['album']['artists'][0]['name']
     album_title = current_song_spotify_obj['item']['album']['images'][0]['url']
     artist_raw = spotipy_object.search(q='artist:' + spotify_artist, type='artist')
-    artist_img = artist_raw['artists']['items'][0]['images'][0]['url']
+    # TODO default artist image
+    try:
+        artist_img = artist_raw['artists']['items'][0]['images'][0]['url']
+    except IndexError:
+        artist_img = ''
     spotify_song = current_song_spotify_obj['item']['name']
     return spotify_artist, spotify_song, artist_img, album_title, next_track_time
 
@@ -45,6 +49,8 @@ def get_lyrics(artist, song, next_track_time):
     if any(trash in song.lower() for trash in TRASH_COMP):
         song = clear_title(song)
     genius = get_genius_obj()
+
+    # TODO clean URLCopyEmbedCopy trash
     lyrics = genius.search_song(song, artist)
     try:
         result_dict["lyrics"] = lyrics.lyrics
