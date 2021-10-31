@@ -7,9 +7,9 @@ from flask_cors import CORS, cross_origin
 from .handlers import LyricsApiHandler
 
 
-template_dir = os.path.dirname(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-template_dir = os.path.join(template_dir, 'templates')
-app = Flask(__name__, template_folder=template_dir)
+# template_dir = os.path.dirname(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+# template_dir = os.path.join(template_dir, 'templates')
+app = Flask(__name__)
 api = Api(app)
 cors = CORS(app)
 api.add_resource(LyricsApiHandler, '/jaskier/lyrics/')

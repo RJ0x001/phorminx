@@ -1,7 +1,6 @@
 import spotipy
 import math
 import pprint
-# from utils.token import get_spotipy_token, get_genius_obj
 from utils.config import scope_song, get_spotipy_token, get_genius_obj
 
 TRASH_COMP = ('live', 'explicit', 'remaster', 'bonus track')
@@ -19,7 +18,7 @@ def get_song():
     artist_raw = spotipy_object.search(q='artist:' + spotify_artist, type='artist')
     artist_img = artist_raw['artists']['items'][0]['images'][0]['url']
     spotify_song = current_song_spotify_obj['item']['name']
-    return spotify_artist, spotify_song, next_track_time
+    return spotify_artist, spotify_song, artist_img, album_title, next_track_time
 
 
 def clear_title(song):
@@ -55,6 +54,8 @@ def get_lyrics(artist, song, next_track_time):
 
 
 def run_lyrics_search():
-    artist, song, next_track_time = get_song()
+    artist, song, artist_img, album_title, next_track_time = get_song()
     result = get_lyrics(artist, song, next_track_time)
+    result['artist_img'] = artist_img
+    result['album_title'] = album_title
     return result

@@ -10,5 +10,7 @@ class LyricsApiHandler(Resource):
             'artist': res["artist"],
             'song': res["song"],
             'lyrics': res["lyrics"],
+            'artist_img': res['artist_img'],
+            'album_title': res['album_title'],
             'timeLeft': res["next_track"],
         }

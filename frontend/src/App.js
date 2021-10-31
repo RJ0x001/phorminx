@@ -1,50 +1,10 @@
-//
-////import './App.css';
-//import React, { useEffect, useState } from 'react';
-//import axios from 'axios'
-//
-//function App() {
-//  const [isLoading, setLoading] = useState(true);
-//  const [getMessage, setMessage] = useState();
-//
-//  const url = "http://localhost:5000/jaskier/lyrics";
-//
-//  useEffect(() => {
-//    axios.get(url).then(response => {
-//      setMessage(response.data);
-//      setLoading(false);
-//    });
-//  }, []);
-//
-//  if (isLoading) {
-//    return <div className="App">Loading...</div>;
-//  }
-//
-//  return (
-//    <div className="App">
-//      <header className="App-header">
-//        <div>
-//           {getMessage.artist} - {getMessage.song}
-//        </div>
-//        <div>
-//            {getMessage.lyrics.split("\n").map((i,key) => {
-//            return <div key={key}>{i}</div>;
-//        })}
-//        </div>
-//      </header>
-//    </div>
-//  );
-//}
-//
-//export default App;
-
 import React from "react";
 import API from "./utils/API";
 import Lyrics from "./lyrics/Lyrics";
 
+import styles from "./style.css"
 
 class App extends React.Component {
-  interval = 6000;
 
   constructor(props) {
     super(props);
@@ -52,35 +12,40 @@ class App extends React.Component {
       isLoading: true,
       artist: null,
       song: null,
-      lyrics: null
+      lyrics: null,
+      timeLeft: null,
     };
   }
+
   render() {
-    const { isLoading, artist, song, lyrics } = this.state;
+    const { isLoading, artist, song, artist_img, album_title, timeLeft, lyrics } = this.state;
     return (
-        <Lyrics isLoading={isLoading} artist={artist} song={song} lyrics={lyrics} />
+        <Lyrics isLoading={isLoading} artist={artist} song={song} artist_img={artist_img} album_title={album_title}
+        lyrics={lyrics} timeLeft={timeLeft}/>
     );
   }
   
   async componentDidMount() {
 
-
     let lyricsData = await API.get('/');
     const song = lyricsData.data.song
     const artist = lyricsData.data.artist
     const lyrics = lyricsData.data.lyrics
-
-
-
-    console.log(this.interval);
+    const artist_img = lyricsData.data.artist_img
+    const album_title = lyricsData.data.album_title
+    const timeLeft = lyricsData.data.timeLeft
 
     this.setState({
       ...this.state, ...{
         isLoading: false,
         song,
         artist,
-        lyrics
+        artist_img,
+        album_title,
+        timeLeft,
+        lyrics,
           }
     });
- }}
+ };
+}
 export default App;

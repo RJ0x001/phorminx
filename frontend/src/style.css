@@ -1,0 +1,21 @@
+.img-thumbnail {
+    height: 400px;
+    width: 400px;
+    margin: 10px;
+}
+
+.text-justify {
+    margin: 50px;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+#songTitle {
+    margin-top: 15px;
+}

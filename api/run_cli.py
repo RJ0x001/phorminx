@@ -14,11 +14,10 @@ def run_cli():
     if args.username and args.type == 'p':
         ph_run(args.username)
     elif args.type == 'j' and args.cli == 'n':
-        jaskier_main.app.run()
+        jaskier_main.app.run(host='0.0.0.0')
     elif args.type == 'j' and args.cli == 'y':
         run_lyrics_search()
 
 
 if __name__ == '__main__':
-    # run_cli()
-    jaskier_main.app.run(host='0.0.0.0')
+    run_cli()
