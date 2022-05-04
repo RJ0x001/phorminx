@@ -1,8 +1,11 @@
 from flask_restful import Resource
+from flask_login import login_required
+
 from jaskier.functions import run_lyrics_search
 
 
 class LyricsApiHandler(Resource):
+    # decorators = [login_required]
     def get(self):
         res = run_lyrics_search()
         return {

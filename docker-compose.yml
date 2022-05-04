@@ -3,7 +3,7 @@ version: '3'
 services:
   api:
     build: api
-    command: ["python", "run_cli.py"]
+    command: ["python", "run_cli.py", "--type", "j", "--cli", "n", "--server", "flask"]
     volumes:
       - .:/api
     environment:
