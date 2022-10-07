@@ -150,7 +150,9 @@ def callback():
 
 @app.route('/refresh')
 def refresh():
-    '''Refresh access token.'''
+    """
+    Refresh access token.
+    """
 
     payload = {
         'grant_type': 'refresh_token',

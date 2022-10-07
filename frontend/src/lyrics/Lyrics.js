@@ -6,9 +6,9 @@ import note from "../assets/loading_note.gif"
 class Lyrics extends React.Component {
   render() {
 
-    const { artist, song, lyrics, artist_img, album_title, timeLeft, isLoading } = this.props;
-    const lyricsDetails = (
-      <div className="text-center">
+    const { artist, song, lyrics, artist_img, album_title, timeLeft, isLoading, songError } = this.props;
+    const mainLyrics = (
+      <div>
         <p id="songTitle" className="h2">{artist} - {song}</p>
         <div>
             <img className="img-thumbnail" id="artistPic" src={artist_img} alt={"#"}/>
@@ -20,11 +20,21 @@ class Lyrics extends React.Component {
             </span>
         </div>
       </div>
+    )
+    const lyricsErrorDetail = (
+      <h1>{songError}</h1>
+    )
+
+    const showLyrics = (
+      <div className="text-center">
+        {songError ? lyricsErrorDetail : mainLyrics}
+      </div>
     );
+
     const loadingMessage = <div className="loading"><img src={note} alt="loading..." /></div>;
     return (
       <div>
-        {isLoading ? loadingMessage : lyricsDetails}
+        {isLoading ? loadingMessage : showLyrics}
       </div>
         );
     }
@@ -34,7 +44,8 @@ Lyrics.propTypes = {
   song: PropTypes.string,
   lyrics: PropTypes.string,
   artist_img: PropTypes.string,
-  album_title: PropTypes.string
+  album_title: PropTypes.string,
+  error: PropTypes.string,
 };
 
 export default Lyrics;
