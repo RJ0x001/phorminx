@@ -8,7 +8,7 @@ from config import GENIUS_TOKEN
 genius = Genius(GENIUS_TOKEN)
 
 
-async def get_lyrics(artist, song):
+def get_lyrics(artist, song):
     result_dict = {
             "artist": artist,
             "song": song,
@@ -28,6 +28,6 @@ async def get_lyrics(artist, song):
     if lyrics and good_trash_lyrics(lyrics.lyrics):
         result_dict["lyrics"] = lyrics.lyrics
     else:
-        result_dict["lyrics"] = "Не удалось найти текст :("
+        result_dict["lyrics"] = "Can't find the lyrics"
 
     return result_dict

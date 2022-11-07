@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import "bootstrap/dist/css/bootstrap.min.css";
 import note from "../assets/loading_note.gif"
 
+
 class Lyrics extends React.Component {
   render() {
 
@@ -21,9 +22,7 @@ class Lyrics extends React.Component {
         </div>
       </div>
     )
-    const lyricsErrorDetail = (
-      <h1>{songError}</h1>
-    )
+    const lyricsErrorDetail = songError ? <h1>{songError["info"]}</h1> : null
 
     const showLyrics = (
       <div className="text-center">
