@@ -4,6 +4,7 @@ import ReactCountryFlag from "react-country-flag"
 
 import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography, MDBNavbarBrand } from 'mdb-react-ui-kit';
 
+import UserLogout from '../components/Logout'
 
 class UserInfo extends React.Component {
 
@@ -33,8 +34,10 @@ class UserInfo extends React.Component {
                   alt=''
                   fluid />
           </MDBCol>
-          <MDBCol style={{marginTop: "20px", color: "black"}}>
+          <MDBCol style={{color: "black"}}>
+
                   { username } <ReactCountryFlag countryCode={country} />
+
           </MDBCol>
 
         </MDBRow>
